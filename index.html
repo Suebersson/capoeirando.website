@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+<html lang="pt-br" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 
   <head>
-    <!-- lang="pt-br" -->
-
     <!--
       If you are serving your web app in a path other than the root, change the
       href value below to reflect the base path you are serving from.
@@ -17,7 +15,7 @@
       This is a placeholder for base href that will be replaced by the value of
       the `--base-href` argument provided to `flutter build`.
     -->
-     <base href="/capoeirando.website/">
+    <base href="/capoeirando.website/">
     
     <title>Capoeirando</title>
 
@@ -25,12 +23,15 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="description" content="Capoeirando web page">
     <meta name="author" content="Suebersson Montalvão">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()"/>
-
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="capoeirando">
+
+    <!-- Metas adicionadas -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#9E2A2B"/>
     
     <link rel="apple-touch-icon" type="image/png" href="./icons/Icon-192.png"/>
     
@@ -43,7 +44,7 @@
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = "1393948050";
+      var serviceWorkerVersion = "736847818";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
@@ -87,7 +88,7 @@
   <body>
 
     <!-- Carregar splashScreen nativa -->
-    <img src="./img/logo_144x144.png" class="splashScreenLogo"/>
+    <img class="splashScreenLogo" src="./img/logo_144x144.png" height="100" width="100" alt="Logo de splashScreen para Capoeirando Website"/>
 
     <script type="text/javascript">
       window.addEventListener('load', function(ev) {
@@ -97,6 +98,7 @@
             serviceWorkerVersion: serviceWorkerVersion,
           },
           onEntrypointLoaded: function(engineInitializer) {
+            //https://docs.flutter.dev/platform-integration/web/renderers
             engineInitializer.initializeEngine().then(function(appRunner) {
               appRunner.runApp();
             });
