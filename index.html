@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
   <head>
     <!--
       If you are serving your web app in a path other than the root, change the
@@ -14,7 +15,7 @@
       This is a placeholder for base href that will be replaced by the value of
       the `--base-href` argument provided to `flutter build`.
     -->
-    <base href="/">
+    <base href="/capoeirando.website/">
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -26,24 +27,26 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="capoeirando">
-    <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./capoeirando.website.github.io/favicon.png"/>
-
+    
     <title>Capoeirando</title>
-    <link rel="manifest" href="./capoeirando.website.github.io/manifest.json">
+    
+    <link rel="apple-touch-icon" href="./icons/Icon-192.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./favicon.png"/>
+
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Carregar os estilos do arquivo styles.css-->
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = "2220151056";
+      var serviceWorkerVersion = "2224506729";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
-    <script src="./capoeirando.website.github.io/flutter.js" defer></script>
-
-      <!-- Carregar os estilos do arquivo styles.css-->
-    <link rel="stylesheet" type="text/css" href="./capoeirando.website.github.io/styles.css" />
+    <script src="./flutter.js" defer></script>
 
     <!-- Tratamento caso a seja carregada uma url com duas barras no final da url-->
     <!-- Sem isso corre o risco a WebApp quebrar o carregamento do flutter -->
@@ -75,10 +78,11 @@
     </script>
 
   </head>
+
   <body>
 
     <!-- Carregar splashScreen nativa -->
-    <img src="./capoeirando.website.github.io/img/logo_144x144.png" class="splashScreenLogo"/>
+    <img src="./img/logo_144x144.png" class="splashScreenLogo"/>
 
     <script type="text/javascript">
       window.addEventListener('load', function(ev) {
@@ -97,4 +101,5 @@
     </script>
   
   </body>
+  
 </html>
