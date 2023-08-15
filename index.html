@@ -34,7 +34,7 @@
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = "3727428863";
+      var serviceWorkerVersion = "3668426430";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
@@ -55,11 +55,11 @@
 
       let url = window.location.href;
 
-      let invalidURL = window.location.origin + '//';
+      let invalidURL = document.querySelector("base").href + '/';
 
       if(url === invalidURL || url.includes(invalidURL)){
-        // window.location.href = window.location.origin + '/page_not_found';
-        window.location.replace(window.location.origin + '/page_not_found');
+        // window.location.href = document.querySelector("base").href + 'page_not_found';
+        window.location.replace(document.querySelector("base").href + 'page_not_found');
       }
 
       // https://developer.mozilla.org/en-US/docs/Web/API/DOMException
@@ -88,20 +88,21 @@
             serviceWorkerVersion: serviceWorkerVersion,
           },
           onEntrypointLoaded: function(engineInitializer) {
-            // engineInitializer.initializeEngine().then(function(appRunner) {
-            //   appRunner.runApp();
-            // });
-              
-            //https://docs.flutter.dev/platform-integration/web/renderers
-            // se o navegador for mobile, renderizar a app usando html para carregar a página mais rápido
-            engineInitializer.initializeEngine({
-              renderer: window.navigator.userAgentData.mobile
-                ? "html"
-                : "canvaskit"
-            }).then(function(appRunner) {
-              appRunner.runApp();
-            });
-
+            try {
+              //https://docs.flutter.dev/platform-integration/web/renderers
+              // se o navegador for mobile, renderizar a app usando html para carregar a página mais rápido
+              engineInitializer.initializeEngine({
+                renderer: window.navigator.userAgentData.mobile
+                  ? "html"
+                  : "canvaskit"
+              }).then(function(appRunner) {
+                appRunner.runApp();
+              });
+            } catch (error) {
+              engineInitializer.initializeEngine().then(function(appRunner) {
+                appRunner.runApp();
+              });
+            }
           }
         });
       });
