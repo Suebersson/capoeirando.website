@@ -34,7 +34,7 @@
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = "1940594377";
+      var serviceWorkerVersion = "2250510609";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
@@ -78,7 +78,7 @@
   <body>
 
     <!-- Carregar splashScreen nativa -->
-    <img class="splashScreenLogo" src="./img/logo_144x144.png" height="100" width="100" alt="Logo de splashScreen para Capoeirando Website"/>
+    <img class="splashScreenLogo" src="./img/logo_144x144.png" height="100" width="100" style="visibility:visible" alt="Logo de splashScreen para Capoeirando Website"/>
 
     <script type="text/javascript">
       window.addEventListener('load', function(ev) {
@@ -90,17 +90,20 @@
           onEntrypointLoaded: function(engineInitializer) {
             try {
               //https://docs.flutter.dev/platform-integration/web/renderers
-              // se o navegador for mobile, renderizar a app usando html para carregar a página mais rápido
+              // se o navegador for mobile, renderizar a Website usando html para carregar a página 
+              // mais rápido
               engineInitializer.initializeEngine({
                 renderer: window.navigator.userAgentData.mobile
                   ? "html"
                   : "canvaskit"
               }).then(function(appRunner) {
                 appRunner.runApp();
+                document.querySelector("img[class='splashScreenLogo']").hidden = true;
               });
             } catch (error) {
               engineInitializer.initializeEngine().then(function(appRunner) {
                 appRunner.runApp();
+                document.querySelector("img[class='splashScreenLogo']").hidden = true;
               });
             }
           }
