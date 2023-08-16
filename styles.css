@@ -6,6 +6,7 @@ body {
 }
 
 .splashScreenLogo {
+    visibility: visible;
     margin: 0;
     position: absolute;
     top: 50%;
