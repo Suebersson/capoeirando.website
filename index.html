@@ -78,7 +78,7 @@
   <body>
 
     <!-- Carregar splashScreen nativa -->
-    <img class="splashScreenLogo" src="./img/logo_144x144.png" height="100" width="100" alt="Logo de splashScreen para Capoeirando Website"/>
+    <img class="splashScreenLogo" src="./img/logo_144x144.png" height="100" width="100" style="visibility:visible" alt="Logo de splashScreen para Capoeirando Website"/>
 
     <script type="text/javascript">
       window.addEventListener('load', function(ev) {
@@ -98,12 +98,12 @@
                   : "canvaskit"
               }).then(function(appRunner) {
                 appRunner.runApp();
-                document.getElementsByClassName('splashScreenLogo').style.visibility = 'hidden';
+                document.querySelector("img[class='splashScreenLogo']").hidden = true
               });
             } catch (error) {
               engineInitializer.initializeEngine().then(function(appRunner) {
                 appRunner.runApp();
-                document.getElementsByClassName('splashScreenLogo').style.visibility = 'hidden';
+                document.querySelector("img[class='splashScreenLogo']").hidden = true
               });
             }
           }
