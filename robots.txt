@@ -1,2 +1,15 @@
+# Referências:
+# https://moz.com/learn/seo/robotstxt
+# https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/?utm_source=lighthouse&utm_medium=devtools
+# https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag?hl=pt-br
+# https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt?hl=pt-br
+
 User-agent: *
 Disallow: /
+Allow: /assets/fonts/
+Allow: /assets/assets/fonts/
+Allow: /assets/packages/
+Allow: /canvaskit/
+Allow: /img/
+Allow: /icons/
+Allow: *.png
