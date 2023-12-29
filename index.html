@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html dir="ltr" loc="pt-BR" lang="pt-BR" style="--vh: 7.2px;" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+<html dir="ltr" lang="pt-BR" style="--vh: 7.2px;" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 
   <head>
 
     <base href="/capoeirando.website/">
-    
+
     <title>Capoeirando</title>
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
-    <meta name="description" content="Capoeirando Website"/>
+    <meta name="description" content="O melhor app para divulgação eventos"/>
     <meta name="author" content="Suebersson Montalvão"/>
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -34,41 +34,45 @@
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = "2120865795";
+      const serviceWorkerVersion = "1092636084";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
     <script src="./flutter.js" defer></script>
 
-    <!-- Tratamento caso a seja carregada uma url com duas barras no final da url-->
-    <!-- Sem isso corre o risco a WebApp quebrar o carregamento do flutter -->
     <script type="text/javascript">
+      // Tratamento caso a seja carregada uma url com duas barras no final da url
+      // Sem isso corre o risco da web app quebrar o carregamento do flutter
 
       // console.log(window.clientInformation.userAgentData.mobile);
       // console.log('Platform name: ' + window.clientInformation.userAgentData.platform);
       // console.log('System name: ' + window.clientInformation.platform);
 
-      // let invalidURL = new RegExp('(http://|https://).*//');
+      // // Se o endereço de url termina com "//"
+      // let invalidURL = new RegExp('.*//\$');
       // if (invalidURL.test(window.location.href)) {
-      //   window.location.href = window.location.origin + '/page_not_found';
+      //   // window.location.href = document.querySelector("base").href + 'page_not_found';
+      //   window.location.replace(document.querySelector("base").href + 'page_not_found');
+      // }
+      //
+      // // Se a rota inicial termina com "//"
+      // if (window.location.href == `${document.querySelector("base").href}/` ) {
+      //   // window.location.href = document.querySelector("base").href;
+      //   window.location.replace(document.querySelector("base").href);
       // }
 
-      let url = window.location.href;
-
-      let invalidURL = document.querySelector("base").href + '/';
-
-      if(url === invalidURL || url.includes(invalidURL)){
-        // window.location.href = document.querySelector("base").href + 'page_not_found';
-        window.location.replace(document.querySelector("base").href + 'page_not_found');
+      // Se a rota começa e tem 2 ou mais ocorrencias de "/"
+      let invalidPathName = new RegExp('^/{2,}');
+      if (invalidPathName.test(window.location.pathname)) {
+        window.location.replace(document.querySelector("base").href);
       }
 
-      // https://developer.mozilla.org/en-US/docs/Web/API/DOMException
-      // DOMException.SECURITY_ERR
-      // DOMException.INVALID_ACCESS_ERR
-      // DOMException.NOT_FOUND_ERR
-
       // window.addEventListener("DOMContentLoaded", function(e) {
-      //   console.log(e.);
+      //   console.log(e);
+      // });
+
+      // window.addEventListener('error', function(e) {
+      //   console.log(e);
       // });
 
     </script>
@@ -81,34 +85,64 @@
     <img class="splashScreenLogo" src="./img/logo_144x144.png" height="100" width="100" style="visibility:visible" alt="Logo de splashScreen para Capoeirando Website"/>
 
     <script type="text/javascript">
-      window.addEventListener('load', function(ev) {
+      window.addEventListener('load', function(_) {
+        // https://docs.flutter.dev/platform-integration/web/initialization
         // Download main.dart.js
         _flutter.loader.loadEntrypoint({
           serviceWorker: {
             serviceWorkerVersion: serviceWorkerVersion,
           },
-          onEntrypointLoaded: function(engineInitializer) {
+          onEntrypointLoaded: async function(engineInitializer) {
             try {
+
               //https://docs.flutter.dev/platform-integration/web/renderers
-              // se o navegador for mobile, renderizar a Website usando html para carregar a página 
-              // mais rápido
+              // se o navegador for mobile, renderizar a web site usando html para 
+              // carregar a página mais rápido
+
               engineInitializer.initializeEngine({
                 renderer: window.navigator.userAgentData.mobile
                   ? "html"
                   : "canvaskit"
-              }).then(function(appRunner) {
-                appRunner.runApp();
-                document.querySelector("img[class='splashScreenLogo']").hidden = true;
-              });
+              }).then(startWebApp);
+
             } catch (error) {
-              engineInitializer.initializeEngine().then(function(appRunner) {
-                appRunner.runApp();
-                document.querySelector("img[class='splashScreenLogo']").hidden = true;
-              });
+
+              engineInitializer.initializeEngine().then(startWebApp);
+
             }
           }
         });
       });
+
+      async function startWebApp(appRunner) {
+        await appRunner.runApp();
+        hideSplashScreen();
+        // readParametersViaUrl();
+      }
+      
+      function hideSplashScreen() {
+        // document.querySelector("img[class='splashScreenLogo']").hidden = true;
+        document
+          .querySelector('img[class="splashScreenLogo"]')
+            .setAttribute("style", "display:none");
+      }
+
+      function readParametersViaUrl() {
+
+        let params = new URLSearchParams(window.location.search);
+
+        if (params.has('description')) {
+          document
+            .querySelector('meta[name="description"]')
+              .setAttribute("content", params.get('description'));
+        }
+
+        if(params.has('title')){
+          document.title = params.get('title');
+        }
+
+      }
+
     </script>
   
   </body>
