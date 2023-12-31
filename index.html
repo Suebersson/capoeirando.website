@@ -3,9 +3,11 @@
 
   <head>
 
-    <base href="/capoeirando.website/">
-
     <title>Capoeirando</title>
+
+    <base href="/capoeirando.website/">
+ 
+    <meta name="flutter-base-href" content="/capoeirando.website/"/>
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
@@ -22,6 +24,7 @@
     <meta name="theme-color" content="#9E2A2B"/>
     <meta name="robots" content="max-image-preview:standard"/>
     <meta http-equiv="Content-Language" content="pt_BR"/>
+    <meta property="og:image" content="./img/logo_144x144.png">
     
     <link rel="apple-touch-icon" type="image/png" href="./icons/Icon-192.png"/>
     
@@ -34,7 +37,7 @@
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      const serviceWorkerVersion = "3707225001";
+      const serviceWorkerVersion = "1494000628";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
@@ -49,22 +52,22 @@
       // console.log('System name: ' + window.clientInformation.platform);
 
       // // Se o endereço de url termina com "//"
-      // let invalidURL = new RegExp('.*//\$');
+      // const invalidURL = new RegExp('.*//\$');
       // if (invalidURL.test(window.location.href)) {
-      //   // window.location.href = document.querySelector("base").href + 'page_not_found';
-      //   window.location.replace(document.querySelector("base").href + 'page_not_found');
+      //   // window.location.href = document.querySelector("base[href]").href + 'page_not_found';
+      //   window.location.replace(document.querySelector("base[href]").href + 'page_not_found');
       // }
       //
-      // // Se a rota inicial termina com "//"
-      // if (window.location.href == `${document.querySelector("base").href}/` ) {
-      //   // window.location.href = document.querySelector("base").href;
-      //   window.location.replace(document.querySelector("base").href);
+      // // Se o nome da rota inicial termina com "//"
+      // if (window.location.href == `${document.querySelector("base[href]").href}/` ) {
+      //   // window.location.href = document.querySelector("base[href]").href;
+      //   window.location.replace(document.querySelector("base[href]").href);
       // }
 
-      // Se a rota começa e tem 2 ou mais ocorrencias de "/"
-      let invalidPathName = new RegExp('^/{2,}');
+      // Se o nome da rota começa e tem 2 ou mais ocorrencias de "/"
+      const invalidPathName = new RegExp('^/{2,}');
       if (invalidPathName.test(window.location.pathname)) {
-        window.location.replace(document.querySelector("base").href);
+        window.location.replace(document.querySelector("base[href]").href);
       }
 
       // window.addEventListener("DOMContentLoaded", function(e) {
@@ -93,6 +96,13 @@
             serviceWorkerVersion: serviceWorkerVersion,
           },
           onEntrypointLoaded: async function(engineInitializer) {
+            
+            async function startApp(appRunner) {
+              await appRunner.runApp();
+              hideSplashScreen();
+              // readParametersViaUrl();
+            }
+
             try {
 
               //https://docs.flutter.dev/platform-integration/web/renderers
@@ -103,23 +113,18 @@
                 renderer: window.navigator.userAgentData.mobile
                   ? "html"
                   : "canvaskit"
-              }).then(startWebApp);
+              }).then(startApp);
 
             } catch (error) {
 
-              engineInitializer.initializeEngine().then(startWebApp);
+              engineInitializer.initializeEngine().then(startApp);
 
             }
+
           }
         });
       });
 
-      async function startWebApp(appRunner) {
-        await appRunner.runApp();
-        hideSplashScreen();
-        readParametersViaUrl();
-      }
-      
       function hideSplashScreen() {
         // document.querySelector("img[class='splashScreenLogo']").hidden = true;
         document
