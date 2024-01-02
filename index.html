@@ -79,6 +79,20 @@
         window.location.replace(document.querySelector("base[href]").href);
       }
 
+      let params = new URLSearchParams(window.location.search);
+
+      if (params.has('description')) {
+        document
+          .querySelector('meta[property="og:description"]')
+            .setAttribute("content", params.get('description'));
+      }
+
+      if(params.has('title')){
+        document
+          .querySelector('meta[property="og:title"]')
+            .setAttribute("content", params.get('title'));
+      }
+
       // window.addEventListener("DOMContentLoaded", function(e) {
       //   console.log(e);
       // });
