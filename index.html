@@ -27,12 +27,11 @@
 
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:title" content="Capoeirando"/>
-    <meta property="og:description" content="Description from meta og"/>
+    <meta property="og:description" content="O melhor app para divulgação de eventos"/>
     <meta property="og:url" content="https://suebersson.github.io/capoeirando.website/"/>
-    <!-- <meta property="og:image" content="https://instagram.fsdu2-1.fna.fbcdn.net/v/t51.2885-19/404963278_722497229780743_5952469622347236808_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fsdu2-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=OCChVyxlv74AX_hpebB&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC_lljRoc3i3MvP75PqHc4004iIVVrJi_ZzGLgvlwmXAA&oe=659A1204&_nc_sid=8b3546"/> -->
-    <!-- <meta property="og:image:type" content="image/jpg"/> -->
-    <meta property="og:image" content=".$FLUTTER_BASE_HREFimg/logo_144x144.png"/>
-
+    <meta property="og:image" content="https://instagram.fsdu2-1.fna.fbcdn.net/v/t51.2885-19/404963278_722497229780743_5952469622347236808_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fsdu2-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=OCChVyxlv74AX_hpebB&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC_lljRoc3i3MvP75PqHc4004iIVVrJi_ZzGLgvlwmXAA&oe=659A1204&_nc_sid=8b3546"/>
+    <!-- <meta property="og:image" content="https://suebersson.github.io/capoeirando.website/img/logo_150x150.jpg"/> -->
+    <meta property="og:image:type" content="image/jpg"/>
     <meta property="og:image:width" content="100"/>
     <meta property="og:image:heigth" content="100"/>
     
@@ -147,13 +146,20 @@
         let params = new URLSearchParams(window.location.search);
 
         if (params.has('description')) {
+          // document
+          //   .querySelector('meta[name="description"]')
+          //     .setAttribute("content", params.get('description'));
+
           document
-            .querySelector('meta[name="description"]')
+            .querySelector('meta[property="og:description"]')
               .setAttribute("content", params.get('description'));
         }
 
         if(params.has('title')){
-          document.title = params.get('title');
+          // document.title = params.get('title');
+          document
+            .querySelector('meta[property="og:title"]')
+              .setAttribute("content", params.get('title'));
         }
 
       }
