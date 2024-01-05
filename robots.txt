@@ -10,6 +10,6 @@ Allow: /assets/fonts/
 Allow: /assets/assets/fonts/
 Allow: /assets/packages/
 Allow: /canvaskit/
-Allow: /img/
 Allow: /icons/
 Allow: *.png
+Allow: *.jpg

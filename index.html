@@ -10,25 +10,57 @@
     <meta name="flutter-base-href" content="/capoeirando.website/"/>
 
     <meta charset="UTF-8">
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="description" content="O melhor app para divulgação de eventos"/>
     <meta name="author" content="Suebersson Montalvão"/>
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <meta name="apple-mobile-web-app-title" content="Capoeirando Website"/>
+    <meta name="apple-mobile-web-app-title" content="Capoeirando"/>
 
     <!-- Metas adicionadas -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()"/>
+    <meta http-equiv="Content-Language" content="pt_BR"/>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0"/>
     <meta name="theme-color" content="#9E2A2B"/>
     <meta name="robots" content="max-image-preview:standard"/>
-    <meta http-equiv="Content-Language" content="pt_BR"/>
-    <meta property="og:image" content="./img/logo_144x144.png">
-    
+
+    <!-- Pré-visualização para link compartilhados nos app de midia social da Meta: https://ogp.me/ -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="pt_BR"/>
+    <meta property="og:url" content="https://suebersson.github.io/capoeirando.website/"/>
+    <meta property="og:site_name" content="Capoeirando"/>
+    <meta property="og:title" content="Capoeirando"/>
+    <meta property="og:description" content="O melhor app para divulgação de eventos"/>
+    <meta property="og:image" content="https://suebersson.github.io/capoeirando.website/icons/splash_screen_150x150.jpg"/>
+    <!-- <meta property="og:image:type" content="image/jpg"/> -->
+    <meta property="og:image:width" content="100"/>
+    <meta property="og:image:heigth" content="100"/>
+
+    <!-- https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:title" content="Capoeirando"/>
+    <meta name="twitter:description" content="O melhor app para divulgação de eventos"/>
+    <meta name="twitter:image" content="https://suebersson.github.io/capoeirando.website/icons/splash_screen_150x150.jpg"/>
+
+    <meta itemprop="name" content="Capoeirando"/>
+    <meta itemprop="description" content="O melhor app para divulgação de eventos"/>
+    <meta itemprop="image" content="https://suebersson.github.io/capoeirando.website/icons/splash_screen_150x150.jpg"/>
+
+<!-- create deep link
+    <meta property="al:ios:app_name" content="Capoeirando">
+    <meta property="al:ios:app_store_id" content="???????">
+    <meta property="al:ios:url" content="?????????">
+
+    <meta property="al:android:app_name" content="Capoeirando">
+    <meta property="al:android:package" content="com.cultura.afro.brasileira.capoeirando">
+    <meta property="al:android:url" content="??????">
+-->
+
     <link rel="apple-touch-icon" type="image/png" href="./icons/Icon-192.png"/>
     
-    <link rel="icon" type="image/png" href="./favicon.png"/>
+    <link rel="icon" type="image/png" href="./icons/favicon.png"/>
 
     <link rel="manifest" href="./manifest.json"/>
 
@@ -37,7 +69,7 @@
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      const serviceWorkerVersion = "1494000628";
+      const serviceWorkerVersion = "2683031070";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
@@ -85,9 +117,10 @@
   <body>
 
     <!-- Carregar splashScreen nativa -->
-    <img class="splashScreenLogo" src="./img/logo_144x144.png" height="100" width="100" style="visibility:visible" alt="Logo de splashScreen para Capoeirando Website"/>
+    <img class="splashScreenLogo" src="./icons/splash_screen_150x150.jpg" height="200" width="200" style="visibility:visible" alt="Logo de splashScreen para Capoeirando Website"/>
 
     <script type="text/javascript">
+
       window.addEventListener('load', function(_) {
         // https://docs.flutter.dev/platform-integration/web/initialization
         // Download main.dart.js
@@ -137,13 +170,19 @@
         let params = new URLSearchParams(window.location.search);
 
         if (params.has('description')) {
+          // document
+          //   .querySelector('meta[name="description"]')
+          //     .setAttribute("content", params.get('description'));
           document
-            .querySelector('meta[name="description"]')
+            .querySelector('meta[property="og:description"]')
               .setAttribute("content", params.get('description'));
         }
 
         if(params.has('title')){
-          document.title = params.get('title');
+          // document.title = params.get('title');
+          document
+            .querySelector('meta[property="og:title"]')
+              .setAttribute("content", params.get('title'));
         }
 
       }
