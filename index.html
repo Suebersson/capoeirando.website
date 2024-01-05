@@ -25,7 +25,6 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0"/>
     <meta name="theme-color" content="#9E2A2B"/>
     <meta name="robots" content="max-image-preview:standard"/>
-<<<<<<< HEAD
 
     <!-- Pré-visualização para link compartilhados nos app de midia social da Meta: https://ogp.me/ -->
     <meta property="og:type" content="website"/>
@@ -59,20 +58,6 @@
     <meta property="al:android:url" content="??????">
 -->
 
-=======
-    <meta http-equiv="Content-Language" content="pt_BR"/>
-
-    <meta property="og:locale" content="pt_BR"/>
-    <meta property="og:title" content="Capoeirando"/>
-    <meta property="og:description" content="O melhor app para divulgação de eventos"/>
-    <meta property="og:url" content="https://suebersson.github.io/capoeirando.website/"/>
-    <!-- <meta property="og:image" content="https://instagram.fsdu2-1.fna.fbcdn.net/v/t51.2885-19/404963278_722497229780743_5952469622347236808_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fsdu2-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=OCChVyxlv74AX_hpebB&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC_lljRoc3i3MvP75PqHc4004iIVVrJi_ZzGLgvlwmXAA&oe=659A1204&_nc_sid=8b3546"/> -->
-    <!-- <meta property="og:image:type" content="image/jpg"/> -->
-    <meta property="og:image" content="https://suebersson.github.io/capoeirando.website/img/logo_144x144.png"/>
-    <meta property="og:image:width" content="100"/>
-    <meta property="og:image:heigth" content="100"/>
-    
->>>>>>> dc85f37199a5825fa4fb9c7cb5ecaaad52efdb98
     <link rel="apple-touch-icon" type="image/png" href="./icons/Icon-192.png"/>
     
     <link rel="icon" type="image/png" href="./icons/favicon.png"/>
@@ -84,7 +69,7 @@
 
     <script type="text/javascript">
       // The value below is injected by flutter build, do not touch.
-      const serviceWorkerVersion = "2683031070";
+      const serviceWorkerVersion = "1584828856";
     </script>
 
     <!-- This script adds the flutter initialization JS code -->
@@ -115,20 +100,6 @@
       const invalidPathName = new RegExp('^/{2,}');
       if (invalidPathName.test(window.location.pathname)) {
         window.location.replace(document.querySelector("base[href]").href);
-      }
-
-      let params = new URLSearchParams(window.location.search);
-
-      if (params.has('description')) {
-        document
-          .querySelector('meta[property="og:description"]')
-            .setAttribute("content", params.get('description'));
-      }
-
-      if(params.has('title')){
-        document
-          .querySelector('meta[property="og:title"]')
-            .setAttribute("content", params.get('title'));
       }
 
       // window.addEventListener("DOMContentLoaded", function(e) {
@@ -162,7 +133,7 @@
             async function startApp(appRunner) {
               await appRunner.runApp();
               hideSplashScreen();
-              readParametersViaUrl();
+              // readParametersViaUrl();
             }
 
             try {
@@ -202,10 +173,6 @@
           // document
           //   .querySelector('meta[name="description"]')
           //     .setAttribute("content", params.get('description'));
-<<<<<<< HEAD
-=======
-
->>>>>>> dc85f37199a5825fa4fb9c7cb5ecaaad52efdb98
           document
             .querySelector('meta[property="og:description"]')
               .setAttribute("content", params.get('description'));

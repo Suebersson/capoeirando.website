@@ -1,7 +1,7 @@
 [{
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
-    "namespace": "Capoeirando",
+    "namespace": "android_app",
     "package_name": "com.cultura.afro.brasileira.capoeirando",
     "sha256_cert_fingerprints":
     [""]
